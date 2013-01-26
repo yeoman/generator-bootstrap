@@ -1,0 +1,39 @@
+{
+  "name": "generator-bootstrap",
+  "version": "0.1.0",
+  "description": "Yeoman generator for Twitter Bootstrap",
+  "keywords": [
+    "yeoman",
+    "generator",
+    "framework",
+    "component",
+    "bootstrap",
+    "css",
+    "ui"
+  ],
+  "homepage": "https://github.com/yeoman/generator-bootstrap",
+  "bugs": "https://github.com/yeoman/generator-bootstrap/issues",
+  "author": "Chrome Developer Relations",
+  "main": "all/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yeoman/generator-bootstrap.git"
+  },
+  "scripts": {
+    "test": "mocha test/test-*.js"
+  },
+  "dependencies": {
+    "yeoman-generator": "https://github.com/yeoman/generators/archive/master.tar.gz"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ]
+}

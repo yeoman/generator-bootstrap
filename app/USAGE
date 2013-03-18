@@ -2,4 +2,4 @@ Description:
     Choose between several flavors of Bootstrap, including SASS, LESS, CSS.
 
 Example:
-    yeoman init bootstrap
+    yo bootstrap

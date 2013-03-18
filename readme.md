@@ -2,11 +2,11 @@
 
 Maintainer: [Brian Ford](https://github.com/btford)
 
-Usage: `yeoman init bootstrap`
+Usage: `yo bootstrap`
 
 Available generators:
 
-- bootstrap:all
+- bootstrap:app
 
 
 ## Contribute

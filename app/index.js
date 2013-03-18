@@ -22,12 +22,12 @@ Generator.prototype.askFor = function askFor(argument) {
 
   this.bootstrapType = 'vanilla';
 
-  this.prompt(prompts, function(err, props) {
+  this.prompt(prompts, function (err, props) {
     if (err) {
       return this.emit('error', err);
     }
 
-    if ( (/y/i).test(props.compassBootstrap) ) {
+    if ((/y/i).test(props.compassBootstrap)) {
       this.bootstrapType = 'compass';
     }
 
@@ -49,8 +49,7 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
     });
   } else if (this.bootstrapType) {
     this.log.writeln('Writing vanilla Bootstrap');
-    this.copy( 'bootstrap.css', 'app/styles/bootstrap.css' );
-    this.directory( 'images', 'app/images' );
+    this.copy('bootstrap.css', 'app/styles/bootstrap.css');
+    this.directory('images', 'app/images');
   }
-
 };

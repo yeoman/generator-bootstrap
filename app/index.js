@@ -13,43 +13,39 @@ util.inherits(Generator, yeoman.generators.Base);
 Generator.prototype.askFor = function askFor(argument) {
   var cb = this.async();
 
+  var formats = [ 'css', 'sass', 'less'];
+
   var prompts = [{
-    name: 'compassBootstrap',
-    message: 'Would you like to use Twitter Bootstrap for Compass (as opposed to vanilla CSS)?',
-    default: 'Y/n',
-    warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+    name: 'format',
+    message: 'In what format would you like the Twitter Bootstrap stylesheets?',
+    default: formats.join('/')
   }];
 
-  this.bootstrapType = 'vanilla';
+  this.format = formats[0];
 
   this.prompt(prompts, function (err, props) {
     if (err) {
       return this.emit('error', err);
     }
 
-    if ((/y/i).test(props.compassBootstrap)) {
-      this.bootstrapType = 'compass';
-    }
+    formats.forEach(function (opt) {
+      if ((new RegExp(opt, 'i')).test(props.format)) {
+        this.format = opt;
+      }
+    }, this);
 
     cb();
   }.bind(this));
 };
 
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {
-  if (this.bootstrapType === 'compass') {
-    var cb = this.async();
 
-    this.write('app/styles/main.scss', '@import "compass_twitter_bootstrap";');
-    this.remote('kristianmandrup', 'compass-twitter-bootstrap', 'c3ccce2cca5ec52437925e8feaaa11fead51e132', function (err, remote) {
-      if (err) {
-        return cb(err);
-      }
-      remote.directory('stylesheets', 'app/styles');
-      cb();
-    });
-  } else if (this.bootstrapType) {
-    this.log.writeln('Writing vanilla Bootstrap');
-    this.copy('bootstrap.css', 'app/styles/bootstrap.css');
-    this.directory('images', 'app/images');
-  }
+  // map format -> package name
+  var packages = {
+    css: 'bootstrap.css',
+    sass: 'sass-bootstrap',
+    less: 'bootstrap'
+  };
+
+  this.install(packages[this.format]);
 };

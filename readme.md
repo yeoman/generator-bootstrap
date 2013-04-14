@@ -2,6 +2,11 @@
 
 Maintainer: [Brian Ford](https://github.com/btford)
 
+
+## Getting Started
+
+Install: `npm install -g generator-bootstrap`
+
 Usage: `yo bootstrap`
 
 Available generators:

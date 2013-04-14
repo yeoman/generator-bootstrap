@@ -12,9 +12,7 @@ util.inherits(Generator, yeoman.generators.Base);
 
 Generator.prototype.askFor = function askFor(argument) {
   var cb = this.async();
-
   var formats = [ 'css', 'sass', 'less'];
-
   var prompts = [{
     name: 'format',
     message: 'In what format would you like the Twitter Bootstrap stylesheets?',
@@ -39,7 +37,6 @@ Generator.prototype.askFor = function askFor(argument) {
 };
 
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {
-
   // map format -> package name
   var packages = {
     css: 'bootstrap.css',

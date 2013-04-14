@@ -44,5 +44,5 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
     less: 'bootstrap'
   };
 
-  this.install(packages[this.format]);
+  this.bowerInstall(packages[this.format]);
 };

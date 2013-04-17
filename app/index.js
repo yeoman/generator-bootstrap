@@ -4,15 +4,27 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 
 
-var Generator = module.exports = function Generator() {
+var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
+
+  this.option('format', {
+    desc: 'Select one of `css`, `sass`, `less` for the bootstrap format.',
+    type: String
+  });
+
+  this.format = options.format;
 };
 
 util.inherits(Generator, yeoman.generators.Base);
 
 Generator.prototype.askFor = function askFor(argument) {
+  if (this.format) {
+    // Skip if already set.
+    return;
+  }
+
   var cb = this.async();
-  var formats = [ 'css', 'sass', 'less'];
+  var formats = ['css', 'sass', 'less'];
   var prompts = [{
     name: 'format',
     message: 'In what format would you like the Twitter Bootstrap stylesheets?',

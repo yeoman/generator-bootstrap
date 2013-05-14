@@ -1,20 +1,28 @@
 /*global describe, beforeEach, it*/
 'use strict';
-var path    = require('path');
+var path = require('path');
 var helpers = require('yeoman-generator').test;
-var assert  = require('assert');
+var assert = require('assert');
 
 
 describe('Bootstrap generator test', function () {
   beforeEach(function (done) {
+    this.bowerInstallCalls = [];
+
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
         return done(err);
       }
 
-      this.webapp = helpers.createGenerator('bootstrap:app', [
+      this.app = helpers.createGenerator('bootstrap:app', [
         '../../app'
       ]);
+
+      // Mock bower install and track the function calls.
+      this.app.bowerInstall = function () {
+        this.bowerInstallCalls.push(arguments);
+      }.bind(this);
+
       done();
     }.bind(this));
   });
@@ -24,33 +32,47 @@ describe('Bootstrap generator test', function () {
     this.app = require('../app');
   });
 
-  it('creates expected files in compass mode', function (done) {
-    var expected = [
-      'app/styles/main.scss'
-    ];
-
-    helpers.mockPrompt(this.webapp, {
-      'compassBootstrap': 'Y'
+  it('installs bootstrap.css', function (done) {
+    helpers.mockPrompt(this.app, {
+      'format': 'css'
     });
 
-    this.webapp.run({}, function () {
-      helpers.assertFiles(expected);
+    this.app.run({}, function () {
+      assert.equal(this.bowerInstallCalls[0][0], 'bootstrap.css');
       done();
-    });
+    }.bind(this));
   });
 
-  it('creates expected files in vanilla mode', function (done) {
-    var expected = [
-      'app/styles/bootstrap.css'
-    ];
-
-    helpers.mockPrompt(this.webapp, {
-      'compassBootstrap': 'N'
+  it('installs sass-bootstrap', function (done) {
+    helpers.mockPrompt(this.app, {
+      'format': 'sass'
     });
 
-    this.webapp.run({}, function () {
-      helpers.assertFiles(expected);
+    this.app.run({}, function () {
+      assert.equal(this.bowerInstallCalls[0][0], 'sass-bootstrap');
       done();
+    }.bind(this));
+  });
+
+  it('installs bootstrap', function (done) {
+    helpers.mockPrompt(this.app, {
+      'format': 'less'
     });
+
+    this.app.run({}, function () {
+      assert.equal(this.bowerInstallCalls[0][0], 'bootstrap');
+      done();
+    }.bind(this));
+  });
+
+  it('installs css by default', function (done) {
+    helpers.mockPrompt(this.app, {
+      'format': 'somethingelse'
+    });
+
+    this.app.run({}, function () {
+      assert.equal(this.bowerInstallCalls[0][0], 'bootstrap.css');
+      done();
+    }.bind(this));
   });
 });

@@ -24,10 +24,10 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.10.3"
+    "yeoman-generator": "~0.11.1"
   },
   "devDependencies": {
-    "mocha": "~1.8.2"
+    "mocha": "~1.9.0"
   },
   "engines": {
     "node": ">=0.8.0"

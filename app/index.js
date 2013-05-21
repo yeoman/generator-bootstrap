@@ -8,7 +8,7 @@ var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.option('format', {
-    desc: 'Select one of `css`, `sass`, `less` for the bootstrap format.',
+    desc: 'Select one of `css`, `sass`, `less`, `stylus` for the bootstrap format.',
     type: String
   });
 
@@ -24,7 +24,7 @@ Generator.prototype.askFor = function askFor(argument) {
   }
 
   var cb = this.async();
-  var formats = ['css', 'sass', 'less'];
+  var formats = ['css', 'sass', 'less', 'stylus'];
   var prompts = [{
     name: 'format',
     message: 'In what format would you like the Twitter Bootstrap stylesheets?',
@@ -53,7 +53,8 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
   var packages = {
     css: 'bootstrap.css',
     sass: 'sass-bootstrap',
-    less: 'bootstrap'
+    less: 'bootstrap',
+    stylus: 'bootstrap-stylus'
   };
 
   this.bowerInstall(packages[this.format]);

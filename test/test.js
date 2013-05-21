@@ -65,6 +65,17 @@ describe('Bootstrap generator test', function () {
     }.bind(this));
   });
 
+  it('installs bootstrap-stylus', function (done) {
+    helpers.mockPrompt(this.app, {
+      'format': 'stylus'
+    });
+
+    this.app.run({}, function () {
+      assert.equal(this.bowerInstallCalls[0][0], 'bootstrap-stylus');
+      done();
+    }.bind(this));
+  });
+
   it('installs css by default', function (done) {
     helpers.mockPrompt(this.app, {
       'format': 'somethingelse'

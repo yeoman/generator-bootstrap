@@ -12,6 +12,10 @@ var Generator = module.exports = function Generator(args, options) {
     type: String
   });
 
+  this.save = options['save'] || false;
+
+  this.saveDev = options['save-dev'] || false;
+
   this.format = options.format;
 };
 
@@ -56,5 +60,5 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
     less: 'bootstrap'
   };
 
-  this.bowerInstall(packages[this.format]);
+  this.bowerInstall(packages[this.format], {'save-dev': this.saveDev, 'save': this.save});
 };

@@ -57,5 +57,5 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
     stylus: 'bootstrap-stylus'
   };
 
-  this.bowerInstall(packages[this.format]);
+  this.bowerInstall(packages[this.format], { save: true });
 };

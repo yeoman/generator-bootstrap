@@ -34,7 +34,7 @@ describe('Bootstrap generator test', function () {
 
   it('installs bootstrap.css', function (done) {
     helpers.mockPrompt(this.app, {
-      'format': 'css'
+      format: 'css'
     });
 
     this.app.run({}, function () {
@@ -45,7 +45,7 @@ describe('Bootstrap generator test', function () {
 
   it('installs sass-bootstrap', function (done) {
     helpers.mockPrompt(this.app, {
-      'format': 'sass'
+      format: 'sass'
     });
 
     this.app.run({}, function () {
@@ -56,7 +56,7 @@ describe('Bootstrap generator test', function () {
 
   it('installs bootstrap', function (done) {
     helpers.mockPrompt(this.app, {
-      'format': 'less'
+      format: 'less'
     });
 
     this.app.run({}, function () {
@@ -67,22 +67,11 @@ describe('Bootstrap generator test', function () {
 
   it('installs bootstrap-stylus', function (done) {
     helpers.mockPrompt(this.app, {
-      'format': 'stylus'
+      format: 'stylus'
     });
 
     this.app.run({}, function () {
       assert.equal(this.bowerInstallCalls[0][0], 'bootstrap-stylus');
-      done();
-    }.bind(this));
-  });
-
-  it('installs css by default', function (done) {
-    helpers.mockPrompt(this.app, {
-      'format': 'somethingelse'
-    });
-
-    this.app.run({}, function () {
-      assert.equal(this.bowerInstallCalls[0][0], 'bootstrap.css');
       done();
     }.bind(this));
   });

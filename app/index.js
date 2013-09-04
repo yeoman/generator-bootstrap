@@ -28,7 +28,7 @@ Generator.prototype.askFor = function askFor(argument) {
   var prompts = [{
     type: 'list',
     name: 'format',
-    message: 'In what format would you like the Twitter Bootstrap stylesheets?',
+    message: 'In what format would you like the Bootstrap stylesheets?',
     choices: formats
   }];
 

@@ -44,7 +44,7 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
   var packages = {
     css: 'bootstrap.css',
     sass: 'sass-bootstrap',
-    less: 'bootstrap',
+    less: 'components-bootstrap',
     stylus: 'bootstrap-stylus'
   };
 

@@ -49,7 +49,7 @@ describe('Bootstrap generator test', function () {
     });
 
     this.app.run({}, function () {
-      assert.equal(this.bowerInstallCalls[0][0], 'sass-bootstrap');
+      assert.equal(this.bowerInstallCalls[0][0], 'bootstrap-sass');
       done();
     }.bind(this));
   });
@@ -60,7 +60,7 @@ describe('Bootstrap generator test', function () {
     });
 
     this.app.run({}, function () {
-      assert.equal(this.bowerInstallCalls[0][0], 'bootstrap');
+      assert.equal(this.bowerInstallCalls[0][0], 'components-bootstrap');
       done();
     }.bind(this));
   });

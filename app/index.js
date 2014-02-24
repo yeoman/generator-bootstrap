@@ -43,7 +43,7 @@ Generator.prototype.bootstrapFiles = function bootstrapFiles() {
   // map format -> package name
   var packages = {
     css: 'bootstrap.css',
-    sass: 'bootstrap-sass',
+    sass: 'twbs-bootstrap-sass',
     less: 'components-bootstrap',
     stylus: 'bootstrap-stylus'
   };

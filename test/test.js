@@ -49,7 +49,7 @@ describe('Bootstrap generator test', function () {
     });
 
     this.app.run({}, function () {
-      assert.equal(this.bowerInstallCalls[0][0], 'git://github.com/twbs/bootstrap-sass.git#v3.1.0');
+      assert.equal(this.bowerInstallCalls[0][0], 'bootstrap-sass-official');
       done();
     }.bind(this));
   });

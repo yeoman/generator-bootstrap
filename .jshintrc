@@ -11,9 +11,5 @@
   "newcap": true,
   "noarg": true,
   "undef": true,
-  "strict": false,
-  "trailing": true,
-  "smarttabs": true,
-  "indent": 2,
-  "white": true
+  "strict": false
 }

@@ -42,7 +42,7 @@ Generator.prototype.askFor = function askFor(argument) {
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {
   // map format -> package name
   var packages = {
-    css: 'bootstrap.css',
+    css: 'bootstrap',
     sass: 'bootstrap-sass-official',
     less: 'components-bootstrap',
     stylus: 'bootstrap-stylus'

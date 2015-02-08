@@ -1,9 +1,8 @@
-/*global describe, beforeEach, it*/
+/*global describe, beforeEach, it */
 'use strict';
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 var assert = require('assert');
-
 
 describe('Bootstrap generator test', function () {
   beforeEach(function (done) {
@@ -11,7 +10,8 @@ describe('Bootstrap generator test', function () {
 
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {
-        return done(err);
+        done(err);
+        return;
       }
 
       this.app = helpers.createGenerator('bootstrap:app', [
@@ -37,7 +37,7 @@ describe('Bootstrap generator test', function () {
       format: 'css'
     });
 
-    this.app.run({}, function () {
+    this.app.run(function () {
       assert.equal(this.bowerInstallCalls[0][0], 'bootstrap');
       done();
     }.bind(this));
@@ -48,7 +48,7 @@ describe('Bootstrap generator test', function () {
       format: 'sass'
     });
 
-    this.app.run({}, function () {
+    this.app.run(function () {
       assert.equal(this.bowerInstallCalls[0][0], 'bootstrap-sass-official');
       done();
     }.bind(this));
@@ -59,7 +59,7 @@ describe('Bootstrap generator test', function () {
       format: 'less'
     });
 
-    this.app.run({}, function () {
+    this.app.run(function () {
       assert.equal(this.bowerInstallCalls[0][0], 'components-bootstrap');
       done();
     }.bind(this));
@@ -70,7 +70,7 @@ describe('Bootstrap generator test', function () {
       format: 'stylus'
     });
 
-    this.app.run({}, function () {
+    this.app.run(function () {
       assert.equal(this.bowerInstallCalls[0][0], 'bootstrap-stylus');
       done();
     }.bind(this));
